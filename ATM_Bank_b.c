@@ -4,12 +4,13 @@
 
 int main(){
 
+	// Assuming that the input values are not strings, but only are of float or int data type.
 	float balance = 0.0;
 	int operation;
 	float amount;
 	float futureBalance = 0.0;
 	float interestRate;
-	int time;
+	float time;
 
 	printf("\nWelcome to the Simple Banking System!\n\n");
 
@@ -36,6 +37,7 @@ int main(){
 			// making sure the user cannot deposit negative amount
 			if (amount < 0){
 				printf("\nInvalid amount. Please enter a positive value.");
+				break;
 			}
 			balance += amount;
 			printf("\nDeposit was successful\n\n");
@@ -50,6 +52,7 @@ int main(){
 			// making sure the user cannot withdraw negative amount
 			if (amount < 0){
 					printf("\nInvalid amount. Please enter a positive value.");
+					break;
 			}
 			
 			// when the amount to be withdrawn is greater than the balance available
@@ -79,7 +82,7 @@ int main(){
 			}
 			
 			printf("Please enter the number of time: ");
-			scanf("%d", &time);
+			scanf("%f", &time);
 			// making sure the user does not enter negative time
 			if (time < 0){
 				printf("\nInvalid number of time. Please enter a positive value.\n");
@@ -87,7 +90,7 @@ int main(){
 			}
 
 			futureBalance = balance * pow((1 + interestRate), time);
-			printf("\nFuture balance after %d time: %f\n\n", time, futureBalance);
+			printf("\nFuture balance after %f time: %f\n\n", time, futureBalance);
 			break;
 
 		// Exit
@@ -109,3 +112,6 @@ int main(){
 
 	return 0;
 }
+
+/*To compile the above code, I have used the command: gcc -Wformat -o atmbankb ATM_Bank_b.c -lm
+I have used the flag "-lm" as we are using the "pow" fucntion which comes under the math header file.*/

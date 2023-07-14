@@ -5,18 +5,24 @@
 
 int main(){
 
+	// Assuming that the input values are not strings, but only are of float or int data type.
 	float balances[MAX_ACCOUNTS];
 	int numOfAccounts;
 	int currentAccount;
 	int operation;
 	float amount;
 	float interestRate;
-	int time;
+	float time;
 
 	printf("\nWelcome to the Simple Banking System!\n\n");
 
 	printf("Please enter the number of accounts: ");
 	scanf("%d", &numOfAccounts);
+
+	if (numOfAccounts > MAX_ACCOUNTS){
+		printf("Number of accounts has exceeded its capacity.");
+		return 0;
+	}
 
 	//Using the for loop to add the balances of each account
 	for (int i = 0; i < numOfAccounts; i++){
@@ -27,6 +33,7 @@ int main(){
 	//Choosing the current account
 	printf("\n\nCurrent Account: ");
 	scanf("%d", &currentAccount);
+	currentAccount -= 1;
 
 	// Using a do loop to keep selecting an operation as long as it is not exit
 	do{
@@ -53,6 +60,7 @@ int main(){
 			// making sure the user cannot deposit negative amount
 			if (amount < 0){
 				printf("\nInvalid amount. Please enter a positive value.");
+				break;
 			}
 			balances[currentAccount] += amount;
 			printf("\nDeposit was successful\n\n");
@@ -66,6 +74,7 @@ int main(){
 			// making sure the user cannot withdraw negative amount
 			if (amount < 0){
 					printf("\nInvalid amount. Please enter a positive value.");
+					break;
 			}
 			
 			// when the amount to be withdrawn is greater than the balance available
@@ -95,7 +104,7 @@ int main(){
 			}
 			
 			printf("Please enter the number of time: ");
-			scanf("%d", &time);
+			scanf("%f", &time);
 			// making sure the user does not enter negative time
 	
 			if (time< 0){
@@ -104,7 +113,7 @@ int main(){
 			}
 
 			float futureBalance = balances[currentAccount] * pow((1 + interestRate), time);
-			printf("\nFuture balance after %d time: %f\n\n", time, futureBalance);
+			printf("\nFuture balance after %f time: %f\n\n", time, futureBalance);
 			break;
 
 		// Switching account
@@ -145,3 +154,6 @@ int main(){
 
 	return 0;
 }
+
+/*To compile the above code, I have used the command: gcc -Wformat -o atmbankb ATM_Bank_b.c -lm
+I have used the flag "-lm" as we are using the "pow" fucntion which comes under the math header file.*/

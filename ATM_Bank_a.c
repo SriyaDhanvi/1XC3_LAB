@@ -2,9 +2,10 @@
 #include <stdio.h>
 int main(){
 
+	// Assuming that the input values are not strings, but only are of float or int data type.
 	float balance = 0.0;
 	int operation;
-	float amount;
+	float amount; 
 
 	printf("\nWelcome to the Simple Banking System!\n\n");
 
@@ -19,7 +20,7 @@ int main(){
 
 		// Asking the user to enter their preferred operation
 		printf("\nPlease enter your operation: ");
-		scanf("%d", operation);
+		scanf("%d", &operation);
 
 		switch(operation){
 		// Deposit
@@ -29,7 +30,8 @@ int main(){
 
 			// making sure the user cannot deposit negative amount
 			if (amount < 0){
-				printf("\nInvalid amount. Please enter a positive value.");
+				printf("\nInvalid amount. Please enter a positive value.\n");
+				break;
 			}
 			balance += amount;
 			printf("\nDeposit was successful\n\n");
@@ -42,7 +44,8 @@ int main(){
 
 			// making sure the user does not withdraw negative amount
 			if (amount < 0){
-				printf("\nInvalid amount. Please enter a positive value.");
+				printf("\nInvalid amount. Please enter a positive value.\n");
+				break;
 			}
 
 			// when the amount to be withdrawn is greater than the balance available
@@ -79,3 +82,6 @@ int main(){
 
 	return 0;
 }
+
+
+// To compile the above code, I have used the command: gcc -Wformat -o atmbanka ATM_Bank_a.c
