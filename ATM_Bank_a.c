@@ -85,3 +85,4 @@ int main(){
 
 
 // To compile the above code, I have used the command: gcc -Wformat -o atmbanka ATM_Bank_a.c
+// I then used the command, "./atmbanka" to run the code.

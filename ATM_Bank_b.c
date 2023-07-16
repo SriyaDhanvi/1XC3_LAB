@@ -113,5 +113,6 @@ int main(){
 	return 0;
 }
 
-/*To compile the above code, I have used the command: gcc -Wformat -o atmbankb ATM_Bank_b.c -lm
-I have used the flag "-lm" as we are using the "pow" fucntion which comes under the math header file.*/
+/*	- To compile the above code, I have used the command: gcc -Wformat -o atmbankb ATM_Bank_b.c -lm
+I have used the flag "-lm" as we are using the "pow" fucntion which comes under the math header file.
+	- I then used the command "./atmbankb" to run the code.*/
